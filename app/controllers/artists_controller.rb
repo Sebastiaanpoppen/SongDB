@@ -21,8 +21,10 @@ def index
 def show
     @artist = Artist.find(params[:id])
     @photos = @artist.photos
+    @song = Song.new
     # @artists = @Artist.photos
 end
+
 
 def new
   @artist = Artist.new
@@ -35,12 +37,12 @@ def create
     image_params.each do |image|
     @artist.photos.create(image: image)
   end
-
-     redirect_to artist_path(@artist), notice: "Artist successfully created"
+     redirect_to @artist, notice: "Artist successfully created"
   else
      render :new
   end
 end
+
 
 def edit
   @artist = Artist.find(params[:id])
@@ -68,5 +70,13 @@ def destroy
   redirect_to artists_path
 end
 
+private
+  def artist_params
+    params.require(:artist).permit(:name, :image)
+  end
+
+  def image_params
+    params[:images].present? ? params.require(:images) : []
+  end
 
 end

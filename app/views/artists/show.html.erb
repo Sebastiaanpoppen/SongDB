@@ -1,25 +1,36 @@
-<h1> Overview of artists and their songs </h1>
+<h1>
+    Overview of artists and their songs
+</h1>
 
-<h2> <%= @artist.name %> </h2>
+<h2>
+    <%= @artist.name %>
+</h2>
 
 <table>
-  <tr>
-    <th>Song names</th>
-  </tr>
-  <% @artist.songs.each do |song| %>
     <tr>
-      <td> <%= song.name %> </td>
+        <th>Song names</th>
+    </tr>
+    <% @artist.songs.each do |song| %>
+    <tr>
+        <td><%= song.name %>
+        </td>
+
     </tr>
     <% end %>
 </table>
 
+<%= link_to "[New Song]", new_song_path %>
+
 <h4>Photos</h4>
 <% @artist.photos.each do |photo| %>
-  <%= image_tag photo.image %>
+<%= image_tag photo.image %>
 <% end %>
+
+<%= link_to "Edit Artist", edit_artist_path, class: "btn btn-primary" %>
+<%= link_to "Delete Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
 
 <br>
 <div class="inline-btn">
-  <div class="back-button">
-      <%= link_to "Back", root_path, class: "btn btn-default" %>
-  </div>
+    <div class="back-button">
+        <%= link_to "Back", root_path, class: "btn btn-default" %>
+    </div>

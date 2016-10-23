@@ -1,4 +1,4 @@
 class Photo < ApplicationRecord
-  belongs_to :Artist
+  belongs_to :artist
   mount_uploader :image, ImageUploader
 end
