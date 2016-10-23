@@ -1,3 +1,4 @@
+Photo.delete_all
 Song.delete_all
 Artist.delete_all
 
