@@ -13,6 +13,11 @@
     <% end %>
 </table>
 
+<h4>Photos</h4>
+<% @artist.photos.each do |photo| %>
+  <%= image_tag photo.image %>
+<% end %>
+
 <br>
 <div class="inline-btn">
   <div class="back-button">
