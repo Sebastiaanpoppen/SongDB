@@ -9,7 +9,10 @@
     <% artists.each do |artist| %>
       <tr>
         <td><%= link_to artist.name, artist_path(artist.id) %></td>
+    <% artist.photos.each do |photo| %>
+        <td><%= image_tag photo.image_url %> </td>
       </tr>
+    <% end %>
     <% end %>
   </table>
 </div>

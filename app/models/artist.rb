@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
 has_many :songs
+has_many :photos
 
 filterrific(
     default_filter_params: { sorted_by: 'name_asc' },
