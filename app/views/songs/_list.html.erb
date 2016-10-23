@@ -1,0 +1,12 @@
+<% if @songs %>
+  <% @songs.each do |song| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= song.name %>
+      </div>
+      <div class="panel-body">
+        <span class="btn btn-default">Delete</span>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,14 +1,16 @@
 <h1>Overview of artists and songs</h1>
 
-  <%= form_for_filterrific @filterrific do |f| %>
-   <div>
-     Sorted by
-     <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
-   </div>
-  <% end %>
+<%= form_for_filterrific @filterrific do |f| %>
+<div>
+    Sorted by
+    <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>
+</div>
+<% end %>
 
 <br>
-  <%= render(
+<%= render(
     partial: 'artists/list',
     locals: { artists: @artists }
   ) %>
+
+<%= link_to "Add new artist", new_artist_path, class: "btn btn-primary" %>
