@@ -1,0 +1,20 @@
+<h1> Overview of artists and their songs </h1>
+
+<h2> <%= @artist.name %> </h2>
+
+<table>
+  <tr>
+    <th>Song names</th>
+  </tr>
+  <% @artist.songs.each do |song| %>
+    <tr>
+      <td> <%= song.name %> </td>
+    </tr>
+    <% end %>
+</table>
+
+<br>
+<div class="inline-btn">
+  <div class="back-button">
+      <%= link_to "Back", root_path, class: "btn btn-default" %>
+  </div>

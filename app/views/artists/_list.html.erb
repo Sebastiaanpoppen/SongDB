@@ -1,0 +1,15 @@
+
+<div id="filterrific_results">
+
+
+  <table>
+    <tr>
+      <th>Name</th>
+    </tr>
+    <% artists.each do |artist| %>
+      <tr>
+        <td><%= link_to artist.name, artist_path(artist.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
