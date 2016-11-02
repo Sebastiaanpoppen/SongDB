@@ -1,18 +1,16 @@
-
-<div id="filterrific_results">
-
-
   <table>
-    <tr>
-      <th>Name</th>
-    </tr>
-    <% artists.each do |artist| %>
+    <thead>
       <tr>
-        <td><%= link_to artist.name, artist_path(artist.id) %></td>
-    <% artist.photos.each do |photo| %>
-        <td><%= image_tag photo.image_url %> </td>
+        <td class="text-left"><strong>Artistname:</strong></td>
       </tr>
-    <% end %>
-    <% end %>
+    </thead>
+      <% artists.each do |artist| %>
+      <tr>
+        <td><%= link_to artist.name, artist_path(artist.id) %>
+          <% artist.photos.each do |photo| %>
+          <td><%= image_tag photo.image_url %> </td>
+        </td>
+      </tr>
+      <% end %>
+        <% end %>
   </table>
-</div>

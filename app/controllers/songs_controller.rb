@@ -1,48 +1,60 @@
 class SongsController < ApplicationController
+  before_filter :load_artist
 
   def index
-    @songs = Song.all
-    @artists = Artist.all
+    @songs = @artist.songs.all
   end
 
   def new
-    @song = Song.new
+    @song = @artist.songs.new
   end
 
+
   def edit
-    @song = Song.find(params[:id])
+    @song = @artist.songs.find(params[:id])
   end
 
   def update
-    @song = Song.find( song_params )
-    if @song.update_attributes( song_params )
-       redirect_to @song
+    @song = @artist.songs.find(params[:id])
+    if @song.update_attributes(song_params)
+       redirect_to artist_path(@artist, @song), notice: 'song was succesfully updated'
     else
        render 'edit'
     end
   end
 
+  def show
+    @song = @artist.songs.find(params[:id])
+  end
+
   def create
-    @song = Song.new ( song_params )
-
-    if @song.save
-      redirect_to root_path
-
-    else
-      render 'new'
+    @song = @artist.songs.create(song_params)
+      if @song.save
+      redirect_to artist_path(@artist)
     end
   end
 
+
+
   def destroy
-    @song = Song.find(params[:id])
+    @song = @artist.songs.find(params[:id])
     @song.destroy
-    redirect_to artist_path
+    redirect_to artist_path(@artist)
   end
 
 
 private
 
+  def artist_params
+    params.require(:artist).permit(:name, :image)
+  end
+
   def song_params
     params.require(:song).permit(:name, :artist_id)
   end
+
+  def load_artist
+    @artist = Artist.find(params[:artist_id])
+  end
+
 end

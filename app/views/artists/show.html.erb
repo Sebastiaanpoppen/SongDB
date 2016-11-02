@@ -7,28 +7,33 @@
 </h2>
 
 <table>
-    <tr>
-        <th>Song names</th>
-    </tr>
+    <thead>
+      <tr>
+          <td class="text-left"><strong>Songname:</strong></td>
+      </tr>
+    </thead>
     <% @artist.songs.each do |song| %>
     <tr>
         <td><%= song.name %>
+          <td><%= link_to "Edit Song", edit_artist_song_path(@artist, song), class: "btn btn-primary" %></td>
+          <td><%= link_to "Delete Song", [@artist, song], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %></td>
         </td>
 
     </tr>
     <% end %>
 </table>
-
-<%= link_to "[New Song]", new_song_path %>
+<br>
+<%= link_to "[New Song]", new_artist_song_path(@artist) %>
 
 <h4>Photos</h4>
 <% @artist.photos.each do |photo| %>
 <%= image_tag photo.image %>
 <% end %>
-
+<br>
+<br>
 <%= link_to "Edit Artist", edit_artist_path, class: "btn btn-primary" %>
 <%= link_to "Delete Artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default" %>
-
+<br>
 <br>
 <div class="inline-btn">
     <div class="back-button">
